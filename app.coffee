@@ -23,18 +23,17 @@ createDefaultProfile = ->
     theProfile = profiles.at(0)
     $("*[data-profile='true']").each (i, val) ->
       console.log "val", val, i if logDebug
+      attributeSelector = $(val)
       profileAttributeName = attributeSelector.data('profile-name')
       console.log "set", profileAttributeName, "to", theProfile.get(profileAttributeName) if logDebug
       attributeSelector.html(theProfile.get(profileAttributeName))
   else
     console.log "create profile" if logDebug
-    attrbutes = {}
-    $("*[data-profile='true']").map (i, val) ->
+    theProfile = profiles.create({})
+    $("*[data-profile='true']").each (i, val) ->
       console.log "val", val, i if logDebug
       attributeSelector = $(val)
-      attrbutes[attributeSelector] = $(val).html()
-    .get ->
-      theProfile = profiles.create(attrbutes)
+      theProfile.set attributeSelector, attributeSelector.html()
 
 saveText = ->
   console.log "save text", $name.html(), $tagline.html() if logDebug
