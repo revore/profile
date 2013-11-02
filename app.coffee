@@ -42,8 +42,7 @@ saveText = ->
   theProfile.save()
 
 debouncedSave = _.throttle(_.debounce(saveText, 100), 300)
-$name.keyup debouncedSave
-$tagline.keyup debouncedSave
+$("*[data-profile='true']").keyup debouncedSave
 
 profilesFetch = profiles.fetch()
 profilesFetch.done createDefaultProfile
