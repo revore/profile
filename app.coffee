@@ -21,8 +21,12 @@ createDefaultProfile = ->
   if profiles.length > 0
     console.log "found profile" if logDebug
     theProfile = profiles.at(0)
-    $name.html(theProfile.get("name"))
-    $tagline.html(theProfile.get("tagline"))
+    $("*[data-profile='true']").map (i, val) ->
+      console.log "val", val, i
+      attributeSelector = $(val)
+      profileAttributeName = attributeSelector.data('profile-name')
+      console.log "set", profileAttributeName, "to", theProfile.get(profileAttributeName) if logDebug
+      attributeSelector.html(theProfile.get(profileAttributeName))
   else
     console.log "create profile" if logDebug
     theProfile = profiles.create({
