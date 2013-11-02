@@ -38,9 +38,9 @@ createDefaultProfile = ->
 
 saveText = ->
   console.log "save text", $name.html(), $tagline.html() if logDebug
-  theProfile.set "name", $name.html()
-  theProfile.set "tagline", $tagline.html()
-  theProfile.save()
+  _.each selectors, (val, key) ->
+    theProfile.set key, val.html()
+    theProfile.save()
 
 debouncedSave = _.throttle(_.debounce(saveText, 100), 300)
 $("*[data-profile='true']").keyup debouncedSave
