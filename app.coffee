@@ -21,9 +21,8 @@ createDefaultProfile = ->
   if profiles.length > 0
     console.log "found profile" if logDebug
     theProfile = profiles.at(0)
-    $("*[data-profile='true']").map (i, val) ->
+    $("*[data-profile='true']").each (i, val) ->
       console.log "val", val, i if logDebug
-      attributeSelector = $(val)
       profileAttributeName = attributeSelector.data('profile-name')
       console.log "set", profileAttributeName, "to", theProfile.get(profileAttributeName) if logDebug
       attributeSelector.html(theProfile.get(profileAttributeName))
@@ -32,14 +31,15 @@ createDefaultProfile = ->
     attrbutes = {}
     $("*[data-profile='true']").map (i, val) ->
       console.log "val", val, i if logDebug
+      attributeSelector = $(val)
       attrbutes[attributeSelector] = $(val).html()
     .get ->
       theProfile = profiles.create(attrbutes)
 
 saveText = ->
-  console.log "save text", $name.html(), $tagline.html()
-  theProfile.set("name", $name.html())
-  theProfile.set("tagline", $tagline.html())
+  console.log "save text", $name.html(), $tagline.html() if logDebug
+  theProfile.set "name", $name.html()
+  theProfile.set "tagline", $tagline.html()
   theProfile.save()
 
 debouncedSave = _.throttle(_.debounce(saveText, 100), 300)
