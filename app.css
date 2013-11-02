@@ -1,2 +1,16 @@
 @import url("//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css");
 @import url("//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css");
+/* line 7, app.sass */
+body {
+  background-color: #333333;
+  color: white;
+}
+
+/* line 11, app.sass */
+.wrapper {
+  box-shadow: inset 0 0 1000px black;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+}
