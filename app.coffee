@@ -35,7 +35,6 @@ createDefaultProfile = ->
       val.html(val, theProfile.set(key))
 
 saveText = ->
-  console.log "save text", $name.html(), $tagline.html() if logDebug
   _.each selectors, (val, key) ->
     theProfile.set key, val.html()
     theProfile.save()
