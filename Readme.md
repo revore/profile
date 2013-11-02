@@ -1,8 +1,8 @@
-Black Backbone app.
+Profile App
 ===
 
-Backbone, coffeescript, sass.
-
+This app is a basic name and description page.
+You can click the things to edit them.
 
 Installation
 ===
