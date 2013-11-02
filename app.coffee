@@ -17,6 +17,7 @@ selectors = {}
 $("*[data-profile='true']").each (_, val) ->
   console.log "val", val if logDebug
   $val = $(val)
+  $val.attr('contenteditable', true)
   selectors[$val.data('profile-name')] = $val
 
 createDefaultProfile = ->
