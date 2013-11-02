@@ -1,6 +1,7 @@
 logDebug = true
 
 $name = $("#name")
+$tagline = $("#tagline")
 
 Profile = Backbone.Model.extend
   defaults:
@@ -21,19 +22,23 @@ createDefaultProfile = ->
     console.log "found profile" if logDebug
     theProfile = profiles.at(0)
     $name.html(theProfile.get("name"))
+    $tagline.html(theProfile.get("tagline"))
   else
     console.log "create profile" if logDebug
     theProfile = profiles.create({
-      copy: $name.html()
+      name: $name.html()
+      tagline: $tagline.html()
     })
 
 saveText = ->
-  console.log "save text", $name.html()
+  console.log "save text", $name.html(), $tagline.html()
   theProfile.set("name", $name.html())
+  theProfile.set("tagline", $tagline.html())
   theProfile.save()
 
-debouncedSave = _.debounce(saveText, 100)
+debouncedSave = _.throttle(_.debounce(saveText, 100), 300)
 $name.keyup debouncedSave
+$tagline.keyup debouncedSave
 
 profilesFetch = profiles.fetch()
 profilesFetch.done createDefaultProfile
