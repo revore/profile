@@ -1,8 +1,5 @@
 logDebug = true
 
-$name = $("#name")
-$tagline = $("#tagline")
-
 Profile = Backbone.Model.extend
   defaults:
     name: 'Full Name'
@@ -10,8 +7,8 @@ Profile = Backbone.Model.extend
 
 ProfilesCollection = Backbone.Collection.extend
   model: Profile
-  # url: '/api/profiles.json'
-  localStorage: new Store('profiles')
+  url: '/api/profiles'
+  # localStorage: new Store('profiles')
 
 profiles = new ProfilesCollection()
 theProfile = null
