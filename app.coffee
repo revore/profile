@@ -17,7 +17,7 @@ selectors = {}
 $("*[data-profile='true']").each (_, val) ->
   console.log "val", val if logDebug
   $val = $(val)
-  $val.attr('contenteditable', true)
+  $val.attr('contenteditable', true) if Revore.params.isOwner
   selectors[$val.data('profile-name')] = $val
 
 createDefaultProfile = ->
