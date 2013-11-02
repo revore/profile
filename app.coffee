@@ -32,7 +32,7 @@ createDefaultProfile = ->
     console.log "create profile" if logDebug
     theProfile = profiles.create()
     _.each selectors, (val, key) ->
-      val.html(val, theProfile.set(key))
+      val.html(theProfile.get(key))
 
 saveText = ->
   _.each selectors, (val, key) ->
