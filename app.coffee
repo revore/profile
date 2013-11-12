@@ -1,4 +1,12 @@
 logDebug = true
+window.Revore ||= {}
+Revore.params ||= {}
+
+isDev = ->
+  true
+
+if isDev()
+  Revore.params.isOwner = true
 
 Profile = Backbone.Model.extend
   defaults:
