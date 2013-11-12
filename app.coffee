@@ -3,7 +3,7 @@ window.Revore ||= {}
 Revore.params ||= {}
 
 isDev = ->
-  true
+  window.location.origin.indexOf("revore") != -1
 
 if isDev()
   Revore.params.isOwner = true
