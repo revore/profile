@@ -1,13 +1,3 @@
-logDebug = true
-window.Revore ||= {}
-Revore.params ||= {}
-
-isDev = ->
-  window.location.origin.indexOf("revore") != -1
-
-if isDev()
-  Revore.params.isOwner = true
-
 Profile = Backbone.Model.extend
   defaults:
     name: 'Full Name'
