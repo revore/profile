@@ -1,7 +1,7 @@
 Profile = Backbone.Model.extend
   defaults:
     name: 'Full Name'
-    tagline: 'A short description of what I do.'
+    tagline: 'A short description of what I make.'
 
 ProfilesCollection = Backbone.Collection.extend
   model: Profile
